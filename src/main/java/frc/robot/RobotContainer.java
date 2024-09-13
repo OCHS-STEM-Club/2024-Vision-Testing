@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
+import frc.robot.commands.DriveCmd.AbsoluteDriveAdv;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
 
@@ -87,7 +87,7 @@ public class RobotContainer
         () -> driverXbox.getRawAxis(2));
 
     drivebase.setDefaultCommand(
-        !RobotBase.isSimulation() ? driveFieldOrientedDirectAngle : driveFieldOrientedDirectAngleSim);
+        !RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedDirectAngleSim);
   }
 
   /**
