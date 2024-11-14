@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
 
 // import com.ctre.phoenix.Logger;
@@ -42,8 +43,8 @@ public class IntakeSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    Logger.recordOutput("Intake Speed", intakeMotor.get());
-    Logger.recordOutput("Beam Break", beamBreakSensor());
+    // Logger.recordOutput("Intake Speed", intakeMotor.get());
+    // Logger.recordOutput("Beam Break", beamBreakSensor());
     
   }
 
@@ -62,9 +63,15 @@ public class IntakeSubsystem extends SubsystemBase {
   public void intakeOut() {
     intakeMotor.set(Constants.IntakeConstants.kIntakeOutSpeed);
   }
-
+  
+  @AutoLogOutput
   public boolean beamBreakSensor() {
     return intakeSensor.get();
+  }
+
+  @AutoLogOutput
+  public double intakeMotorSpeed(){
+    return intakeMotor.get();
   }
 }
 

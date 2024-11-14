@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
 
 import com.ctre.phoenix6.StatusSignal;
@@ -63,8 +64,8 @@ public class ShooterSubsystem extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     m_velocity.Slot = 0;
-    Logger.recordOutput("Left Shooter Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
-    Logger.recordOutput("Right Shooter Velocity", shooterMotorRight.getVelocity().getValueAsDouble());
+    // Logger.recordOutput("Left Shooter Velocity", shooterMotorLeft.getVelocity().getValueAsDouble());
+    // Logger.recordOutput("Right Shooter Velocity", shooterMotorRight.getVelocity().getValueAsDouble());
 
   }
 
@@ -83,13 +84,15 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorRight.set(ShooterConstants.kShooterSpeedShuttle);
   }
 
-
-  public StatusSignal<Double> leftShooterVelocity() {
-    return shooterMotorLeft.getVelocity();
+  @AutoLogOutput
+  public double leftShooterVelocity() {
+    return shooterMotorLeft.getVelocity().getValueAsDouble();
+  }
+  @AutoLogOutput
+  public double rightShooterVelocity() {
+    return shooterMotorRight.getVelocity().getValueAsDouble();
   }
 
-  public StatusSignal<Double> rightShooterVelocity() {
-    return shooterMotorRight.getVelocity();
-  }
+
   
 }

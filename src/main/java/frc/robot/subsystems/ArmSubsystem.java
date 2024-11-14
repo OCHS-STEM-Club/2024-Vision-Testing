@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.AutoLog;
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
 
 import com.revrobotics.AbsoluteEncoder;
@@ -86,11 +88,6 @@ public class ArmSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
 
-    // This method will be called once per scheduler run
-    Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
-    Logger.recordOutput("Right Arm Motor", armMotorRight.get());
-    Logger.recordOutput("Arm Encoder", m_encoder.getPosition());
-
     SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
 
     double value = SmartDashboard.getNumber("Arm PID Value", 0);
@@ -131,6 +128,20 @@ public class ArmSubsystem extends SubsystemBase {
 
   public void setReference(double pidReference) {
     m_pidController.setReference(pidReference,CANSparkMax.ControlType.kPosition);
+  }
+  @AutoLogOutput
+  public double leftArmMotorSpeed(){
+    return armMotorLeft.get();
+  }
+
+  @AutoLogOutput
+  public double RightArmMotorSpeed(){
+    return armMotorRight.get();
+  }
+
+  @AutoLogOutput
+  public double armEncoderPosition(){
+    return m_encoder.getPosition();
   }
 
 

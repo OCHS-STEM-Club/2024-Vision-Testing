@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.littletonrobotics.junction.Logger;
 
 import com.revrobotics.AbsoluteEncoder;
@@ -48,7 +49,7 @@ public class ClimberSubsystem extends SubsystemBase {
   }
   @Override
   public void periodic() {
-    Logger.recordOutput("Climber Encoder",climberEncoder.getPosition());
+    // Logger.recordOutput("Climber Encoder",climberEncoder.getPosition());
   }
 
   public void climberDown() {
@@ -74,6 +75,7 @@ public class ClimberSubsystem extends SubsystemBase {
   public void climberOff() {
     climberMotor.set(0);
   }
+  
 
 
   public boolean isClimberdown() {
@@ -81,6 +83,11 @@ public class ClimberSubsystem extends SubsystemBase {
       return true;
     } else 
       return false;
+  }
+
+  @AutoLogOutput
+  public double climberEncoderPosition(){
+    return climberEncoder.getPosition();
   }
 
 
