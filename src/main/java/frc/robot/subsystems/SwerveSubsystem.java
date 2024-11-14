@@ -8,6 +8,8 @@ import java.io.File;
 import java.util.Arrays;
 import java.util.function.DoubleSupplier;
 
+import org.littletonrobotics.junction.AutoLog;
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.photonvision.PhotonCamera;
 import org.photonvision.targeting.PhotonPipelineResult;
 
@@ -507,6 +509,7 @@ public class SwerveSubsystem extends SubsystemBase
    *
    * @return The robot's pose
    */
+  @AutoLogOutput
   public Pose2d getPose()
   {
     return swerveDrive.getPose();
