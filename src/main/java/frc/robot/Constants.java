@@ -26,6 +26,27 @@ public final class Constants
   public static final double LOOP_TIME  = 0.13; //s, 20ms + 110ms sprk max velocity lag
   public static final double MAX_SPEED  = Units.feetToMeters(14.5);
       // Maximum speed of the robot in meters per second, used to limit acceleration.
+  public static class ArmConstants {
+    public static final int kArmMotorLeftID = 19;
+    public static final int kArmMotorRightID = 20;
+    public static final double kEncoderZeroOffset = 295;
+
+    public static final double kP = 0.02;
+    public static final double kI = 0;
+    public static final double kD = 0;
+    public static final int kIz = 0;
+    public static final int kFF = 0;
+    public static final int kMaxOutput = 1;
+    public static final double kMinOutput = -1;
+
+    public static final double kIntakeSetpoint = 0;
+    public static final double kShooterSetpoint = 12;
+    public static final double kAmpSetpoint = 94;
+
+    public static final double kArmUpSpeed = 0.2;
+    public static final double kArmDownSpeed = -0.2;
+
+  }
 
   public static final class AutonConstants
   {
@@ -48,6 +69,30 @@ public final class Constants
     public static final double LEFT_X_DEADBAND  = 0.1;
     public static final double LEFT_Y_DEADBAND  = 0.1;
     public static final double RIGHT_X_DEADBAND = 0.1;
-    public static final double TURN_CONSTANT    = 6;
+    public static final double TURN_CONSTANT = 6;
+
+    public static final double TRANSLATION_X_CONSTANT = 1;
+    public static final double TRANSLATION_Y_CONSTANT = Constants.OperatorConstants.TRANSLATION_X_CONSTANT;
+
+    public static final int kOperatorControllerPort = 2;
+    public static final int kDriverControllerPort = 0;
+
+    public static final boolean isButtonBoxBeingUsed = true;
   }
+
+  public static class ShooterConstants {
+    public static final int kShooterMotorLeftID = 21;
+    public static final int kShooterMotorRightID = 22;
+    public static final double kShooterSpeed = 0.25; //0.45
+    public static final double kShooterSpeedShuttle = 0.5;
+  }
+
+  public static class IntakeConstants {
+    public static final int kIntakeMotorID = 18;
+    public static final double kIntakeInSpeed = 0.45;
+    public static final double kIntakeOutSpeed = -0.5;
+    public static final int kBeamBreakPort = 0;
+  }
+
+
 }

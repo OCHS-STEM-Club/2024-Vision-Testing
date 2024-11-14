@@ -9,11 +9,15 @@ import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkAbsoluteEncoder;
 import com.revrobotics.SparkPIDController;
+import com.revrobotics.CANSparkBase.ControlType;
 import com.revrobotics.CANSparkBase.IdleMode;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.Constants.ArmConstants;
 
 public class ArmSubsystem extends SubsystemBase {
   /** Creates a new ArmSubsystem. */
@@ -55,5 +59,47 @@ public class ArmSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-  }
+  Logger.recordOutput("Left Arm Motor", armMotorLeft.get());
+  Logger.recordOutput("Right Arm Motor", armMotorRight.get());
+  Logger.recordOutput("Arm Encoder", m_encoder.getPosition());
+
+  SmartDashboard.putNumber("Arm Encoder", m_encoder.getPosition());
+
+  double value = SmartDashboard.getNumber("Arm PID Value", 0);
+  boolean turningMode = SmartDashboard.getBoolean("Tuning Mode", false);
+  if ((value !=0 && turningMode == true)) { m_pidController.setReference(value,CANSparkMax.ControlType.kPosition); armValue = value; }
+
+}
+
+public void armUp() {
+  armMotorLeft.set(Constants.ArmConstants.kArmUpSpeed);
+  armMotorRight.set(Constants.ArmConstants.kArmUpSpeed);
+}
+public void armDown() {
+  armMotorLeft.set(Constants.ArmConstants.kArmDownSpeed);
+  armMotorRight.set(Constants.ArmConstants.kArmDownSpeed);
+}
+public void armOff() {
+  armMotorLeft.set(0);  
+  armMotorRight.set(0);
+}
+public void set(double speed) {
+  armMotorLeft.set(speed);
+  armMotorRight.set(speed);
+}
+
+public void intakeSetpoint() {
+  m_pidController.setReference(Constants.ArmConstants.kIntakeSetpoint, CANSparkMax.ControlType.kPosition);
+}
+
+public void shooterSetpoint() {
+  m_pidController.setReference(Constants.ArmConstants.kShooterSetpoint, CANSparkMax.ControlType.kPosition);
+}
+
+public void ampSetpoint() {
+  m_pidController.setReference(Constants.ArmConstants.kAmpSetpoint, CANSparkMax.ControlType.kPosition);
+}
+
+public void setReference(double pidReference) {
+  m_pidController.setReference(pidReference, CANSparkMax.ControlType.kPosition);
 }
