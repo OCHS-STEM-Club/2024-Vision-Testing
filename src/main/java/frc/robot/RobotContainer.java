@@ -86,9 +86,9 @@ public class RobotContainer
   // left stick controls translation
   // right stick controls the angular velocity of the robot
   Command driveFieldOrientedAnglularVelocity = drivebase.driveCommand(
-      () -> MathUtil.applyDeadband(driverXbox.getLeftY() * -1, OperatorConstants.LEFT_Y_DEADBAND),
-      () -> MathUtil.applyDeadband(driverXbox.getLeftX() * -1, OperatorConstants.LEFT_X_DEADBAND),
-      () -> MathUtil.applyDeadband(driverXbox.getRawAxis(4) * -1, OperatorConstants.RIGHT_X_DEADBAND));
+      () -> MathUtil.applyDeadband(driverXbox.getLeftY() * 1, OperatorConstants.LEFT_Y_DEADBAND),
+      () -> MathUtil.applyDeadband(driverXbox.getLeftX() * 1, OperatorConstants.LEFT_X_DEADBAND),
+      () -> MathUtil.applyDeadband(driverXbox.getRawAxis(4) * 1, OperatorConstants.RIGHT_X_DEADBAND));
       // () -> 0);
 
   Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
@@ -173,7 +173,7 @@ public class RobotContainer
     } else
     {
       driverXbox.a().onTrue(
-        (Commands.runOnce(drivebase::zeroGyro))
+        (Commands.runOnce(drivebase::zeroGyroWithAlliance))
       );
       // driverXbox.x().onTrue(
       //   Commands.runOnce(drivebase::addFakeVisionReading)
@@ -275,5 +275,9 @@ public class RobotContainer
   public void setMotorBrake(boolean brake)
   {
     drivebase.setMotorBrake(brake);
+  }
+
+  public void zeroGyroWithAlliance(){
+    drivebase.zeroGyroWithAlliance();
   }
 }

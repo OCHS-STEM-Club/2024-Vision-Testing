@@ -123,6 +123,8 @@ public class Robot extends LoggedRobot
     {
       m_autonomousCommand.schedule();
     }
+
+    m_robotContainer.zeroGyroWithAlliance();
   }
 
   /**
