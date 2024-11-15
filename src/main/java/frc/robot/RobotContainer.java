@@ -88,7 +88,7 @@ public class RobotContainer
   Command driveFieldOrientedAnglularVelocity = drivebase.driveCommand(
       () -> MathUtil.applyDeadband(driverXbox.getLeftY() * -1, OperatorConstants.LEFT_Y_DEADBAND),
       () -> MathUtil.applyDeadband(driverXbox.getLeftX() * -1, OperatorConstants.LEFT_X_DEADBAND),
-      () -> MathUtil.applyDeadband(driverXbox.getRawAxis(2) * -1, OperatorConstants.RIGHT_X_DEADBAND));
+      () -> MathUtil.applyDeadband(driverXbox.getRawAxis(4) * -1, OperatorConstants.RIGHT_X_DEADBAND));
       // () -> 0);
 
   Command driveFieldOrientedDirectAngleSim = drivebase.simDriveCommand(
