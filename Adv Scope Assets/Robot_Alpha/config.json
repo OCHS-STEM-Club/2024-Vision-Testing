@@ -12,7 +12,7 @@
     }
 
   ],
-  "position": [ 0, 0, 0 ],
+  "position": [ 0, 0, 0.0422 ],
   "cameras": [
     {
       "name": "Front Camera",
