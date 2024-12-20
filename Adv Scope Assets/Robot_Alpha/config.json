@@ -8,7 +8,7 @@
     },
     {
       "axis": "z",
-      "degrees": 90
+      "degrees": 332
     }
 
   ],
@@ -20,7 +20,12 @@
         {
           "axis": "y",
           "degrees": 20
+        },
+	{
+          "axis": "z",
+          "degrees": 180
         }
+
       ],
       "position": [ 0.2, 0, 0.8 ],
       "resolution": [ 960, 720 ],

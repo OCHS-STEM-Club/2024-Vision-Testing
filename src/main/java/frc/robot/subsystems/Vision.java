@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
+
+import org.littletonrobotics.junction.AutoLog;
+import org.littletonrobotics.junction.AutoLogOutput;
 import org.photonvision.EstimatedRobotPose;
 import org.photonvision.PhotonCamera;
 import org.photonvision.PhotonPoseEstimator;
@@ -107,6 +110,7 @@ public class Vision
    *                    itself correctly.
    * @return The target pose of the AprilTag.
    */
+  @AutoLogOutput
   public static Pose2d getAprilTagPose(int aprilTag, Transform2d robotOffset)
   {
     Optional<Pose3d> aprilTagPose3d = fieldLayout.getTagPose(aprilTag);
@@ -155,6 +159,7 @@ public class Vision
    *
    * @return an {@link EstimatedRobotPose} with an estimated pose, timestamp, and targets used to create the estimate
    */
+  @AutoLogOutput
   public Optional<EstimatedRobotPose> getEstimatedGlobalPose(Cameras camera)
   {
     Optional<EstimatedRobotPose> poseEst = filterPose(camera.poseEstimator.update());
@@ -278,6 +283,7 @@ public class Vision
    * @param id AprilTag ID
    * @return Distance
    */
+  @AutoLogOutput
   public double getDistanceFromAprilTag(int id)
   {
     Optional<Pose3d> tag = fieldLayout.getTagPose(id);
@@ -291,6 +297,7 @@ public class Vision
    * @param camera Camera to check.
    * @return Tracked target.
    */
+  @AutoLogOutput
   public PhotonTrackedTarget getTargetFromId(int id, Cameras camera)
   {
     PhotonTrackedTarget  target = null;
@@ -391,7 +398,7 @@ public class Vision
     /**
      * Center Camera
      */
-    CENTER_CAM("center",
+    CENTER_CAM("Center",
                new Rotation3d(0, Units.degreesToRadians(18), 0),
                new Translation3d(Units.inchesToMeters(-4.628),
                                  Units.inchesToMeters(-10.687),

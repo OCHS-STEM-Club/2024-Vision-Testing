@@ -92,45 +92,6 @@
               "_showGlyph": false
             }
           },
-          "2,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/frontleft/Absolute Encoder Read Issue",
-              "_title": "swerve/modules/frontleft/Absolute Encoder Read Issue",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Raw IMU Yaw",
-              "_title": "Raw IMU Yaw",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,1": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Adjusted IMU Yaw",
-              "_title": "Adjusted IMU Yaw",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "5,1": {
             "size": [
               1,
@@ -209,45 +170,6 @@
               "_showGlyph": false
             }
           },
-          "2,2": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backleft/Raw Absolute Encoder",
-              "_title": "swerve/modules/backleft/Raw Absolute Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,2": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backleft/Raw Angle Encoder",
-              "_title": "swerve/modules/backleft/Raw Angle Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,2": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backleft/Raw Drive Encoder",
-              "_title": "swerve/modules/backleft/Raw Drive Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
           "5,2": {
             "size": [
               1,
@@ -322,45 +244,6 @@
               "_type": "Text View",
               "_source0": "network_table:///SmartDashboard/swerve/modules/backright/Raw Drive Encoder",
               "_title": "swerve/modules/backright/Raw Drive Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "2,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backright/Raw Drive Velocity",
-              "_title": "swerve/modules/backright/Raw Drive Velocity",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "3,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backright/Adjusted Absolute Encoder",
-              "_title": "swerve/modules/backright/Adjusted Absolute Encoder",
-              "_glyph": 148,
-              "_showGlyph": false
-            }
-          },
-          "4,3": {
-            "size": [
-              1,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/swerve/modules/backright/Absolute Encoder Read Issue",
-              "_title": "swerve/modules/backright/Absolute Encoder Read Issue",
               "_glyph": 148,
               "_showGlyph": false
             }
@@ -468,6 +351,19 @@
               "_glyph": 148,
               "_showGlyph": false
             }
+          },
+          "3,1": {
+            "size": [
+              2,
+              2
+            ],
+            "content": {
+              "_type": "Network Table Tree",
+              "_source0": "network_table:///photonvision",
+              "_title": "/photonvision",
+              "_glyph": 148,
+              "_showGlyph": false
+            }
           }
         }
       }
@@ -514,9 +410,9 @@
     }
   ],
   "windowGeometry": {
-    "x": -7.333333492279053,
-    "y": -7.333333492279053,
-    "width": 1294.6666259765625,
-    "height": 766.6666870117188
+    "x": 0.6666666865348816,
+    "y": 0.0,
+    "width": 1278.6666259765625,
+    "height": 734.0
   }
 }

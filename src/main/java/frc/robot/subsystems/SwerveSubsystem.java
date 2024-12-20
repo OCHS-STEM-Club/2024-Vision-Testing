@@ -70,7 +70,7 @@ public class SwerveSubsystem extends SubsystemBase
   /**
    * Enable vision odometry updates while driving.
    */
-  private final boolean visionDriveTest = false;
+  private final boolean visionDriveTest = true;
 
   /**
    * Initialize {@link SwerveDrive} with the directory provided.
@@ -194,6 +194,7 @@ public class SwerveSubsystem extends SubsystemBase
    *
    * @return Distance to speaker in meters.
    */
+  @AutoLogOutput
   public double getDistanceToSpeaker()
   {
     int allianceAprilTag = DriverStation.getAlliance().get() == Alliance.Blue ? 7 : 4;
@@ -207,6 +208,7 @@ public class SwerveSubsystem extends SubsystemBase
    *
    * @return {@link Rotation2d} of which you need to achieve.
    */
+  @AutoLogOutput
   public Rotation2d getSpeakerYaw()
   {
     int allianceAprilTag = DriverStation.getAlliance().get() == Alliance.Blue ? 7 : 4;

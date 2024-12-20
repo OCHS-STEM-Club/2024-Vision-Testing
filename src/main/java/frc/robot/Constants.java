@@ -73,7 +73,7 @@ public final class Constants
   public static class ArmConstants {
     public static final int kArmMotorLeftID = 19;
     public static final int kArmMotorRightID = 20;
-    public static final double kEncoderZeroOffset = 295;
+    public static final double kEncoderZeroOffset = 291;
 
     public static final double kP = 0.02;
     public static final double kI = 0;
@@ -83,9 +83,9 @@ public final class Constants
     public static final int kMaxOutput = 1;
     public static final double kMinOutput = -1;
 
-    public static final double kIntakeSetpoint = 0;
-    public static final double kShooterSetpoint = 12;
-    public static final double kAmpSetpoint = 94;
+    public static final double kIntakeSetpoint = 5;
+    public static final double kShooterSetpoint = 17;
+    public static final double kAmpSetpoint = 99;
 
     public static final double kArmUpSpeed = 0.2;
     public static final double kArmDownSpeed = -0.2;
