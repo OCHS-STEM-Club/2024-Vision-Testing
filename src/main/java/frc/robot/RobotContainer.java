@@ -24,8 +24,10 @@ import frc.robot.commands.Climber.ClimberDownCommand;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCommand;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
+import frc.robot.commands.Arm.ArmCommand;
 import frc.robot.subsystems.ClimberSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
+import frc.robot.subsystems.ArmSubsystem;
 
 import java.io.File;
 
@@ -45,7 +47,7 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
  
-  // private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
   // private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   // private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
@@ -58,8 +60,8 @@ public class RobotContainer
 
 
   //Commands
-  // ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
-  // ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
+  ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
+  ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
   // ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
   // IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
   // IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
@@ -205,14 +207,14 @@ public class RobotContainer
     //   m_shooterShuttleCommand
     // );
 
-    // // Button Box Configs
-    // m_buttonBox.button(1).whileTrue(
-    //   m_manualArmDownCommand
-    // );
+    // Button Box Configs
+    driverXbox.rightBumper().whileTrue(
+      m_manualArmDownCommand
+    );
 
-    // m_buttonBox.button(3).whileTrue(
-    //   m_manualArmUpCommand
-    // );
+    driverXbox.leftBumper().whileTrue(
+      m_manualArmUpCommand
+    );
 
     // m_buttonBox.button(4).whileTrue(
     //   Commands.runOnce(m_armSubsystem::intakeSetpoint)
