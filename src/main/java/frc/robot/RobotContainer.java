@@ -20,20 +20,11 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.ArmConstants;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.Arm.ArmCommand;
 import frc.robot.commands.Climber.ClimberDownCommand;
 import frc.robot.commands.Climber.ClimberDownOverrideCmd;
 import frc.robot.commands.Climber.ClimberUpCommand;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
-import frc.robot.commands.Intake.IntakeInCommand;
-import frc.robot.commands.Intake.IntakeOutCommand;
-import frc.robot.commands.Intake.IntakeOverrideCommand;
-import frc.robot.commands.Shooter.ShooterCommand;
-import frc.robot.commands.Shooter.ShooterShuttleCmd;
-import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.ClimberSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 
 import java.io.File;
@@ -54,9 +45,9 @@ public class RobotContainer
   private final SwerveSubsystem drivebase = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                          "swerve/neo"));
  
-  private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
-  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
-  private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
+  // private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
+  // private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  // private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
   // Replace with CommandPS4Controller or CommandJoystick if needed
@@ -67,17 +58,17 @@ public class RobotContainer
 
 
   //Commands
-  ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
-  ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
-  ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
-  IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
-  IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
-  IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
+  // ArmCommand m_manualArmUpCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmUpSpeed);
+  // ArmCommand m_manualArmDownCommand = new ArmCommand(m_armSubsystem, ArmConstants.kArmDownSpeed);
+  // ShooterCommand m_shooterCommand = new ShooterCommand(m_shooterSubsystem);
+  // IntakeInCommand m_intakeInCommand = new IntakeInCommand(m_intakeSubsystem);
+  // IntakeOverrideCommand m_intakeOverrideCommand = new IntakeOverrideCommand(m_intakeSubsystem);
+  // IntakeOutCommand m_intakeOutCommand = new IntakeOutCommand(m_intakeSubsystem);
   ClimberDownOverrideCmd m_climberDownOverrideCmd = new ClimberDownOverrideCmd(m_climberSubsystem);
   ClimberUpOverrideCmd m_climberUpOverrideCmd = new ClimberUpOverrideCmd(m_climberSubsystem);
   ClimberDownCommand m_climberDownCommand = new ClimberDownCommand(m_climberSubsystem);
   ClimberUpCommand m_climberUpCommand = new ClimberUpCommand(m_climberSubsystem);
-  ShooterShuttleCmd m_shooterShuttleCommand = new ShooterShuttleCmd(m_shooterSubsystem);
+  // ShooterShuttleCmd m_shooterShuttleCommand = new ShooterShuttleCmd(m_shooterSubsystem);
 
 
   // Applies deadbands and inverts controls because joysticks
@@ -101,29 +92,29 @@ public class RobotContainer
    */
   public RobotContainer()
   {
-    // Intake
-    NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
-    NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
-    NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem));
-    NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
+    // // Intake
+    // NamedCommands.registerCommand("Intake in Override", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(0.4)));
+    // NamedCommands.registerCommand("Intake Out", Commands.runOnce(() -> m_intakeSubsystem.intakeSpeed(-0.4)));
+    // NamedCommands.registerCommand("Intake in BB", new IntakeInCommand(m_intakeSubsystem));
+    // NamedCommands.registerCommand("Intake Off", Commands.runOnce(m_intakeSubsystem::intakeOff));
 
-    // Shooter
-    NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
-    NamedCommands.registerCommand("Shooter On 4 Piece", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.45)));
-    NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
+    // // Shooter
+    // NamedCommands.registerCommand("Shooter On", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.4)));
+    // NamedCommands.registerCommand("Shooter On 4 Piece", Commands.runOnce(() -> m_shooterSubsystem.shooterOn(0.45)));
+    // NamedCommands.registerCommand("Shooter Off", Commands.runOnce(m_shooterSubsystem::shooterOff));
 
-    // Arm
-    NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
-    NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
-    NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
-    NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
-    NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
-    NamedCommands.registerCommand("Arm to Shooter Midlfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
-    NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
-    NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
-    NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
-    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
-    NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
+    // // Arm
+    // NamedCommands.registerCommand("Arm to Shooter 1st Piece Middle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    // NamedCommands.registerCommand("Arm to Shooter Shuttle", Commands.runOnce(() -> m_armSubsystem.setReference(27)));
+    // NamedCommands.registerCommand("Arm to Shooter 4 Piece", Commands.runOnce(() -> m_armSubsystem.setReference(31)));
+    // NamedCommands.registerCommand("Arm to Shooter 4 Piece 1st", Commands.runOnce(() -> m_armSubsystem.setReference(37)));
+    // NamedCommands.registerCommand("Arm to Shooter Sides", Commands.runOnce(() -> m_armSubsystem.setReference(7)));
+    // NamedCommands.registerCommand("Arm to Shooter Midlfield 2 piece", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
+    // NamedCommands.registerCommand("Arm to Intake", Commands.runOnce(m_armSubsystem::intakeSetpoint));
+    // NamedCommands.registerCommand("Arm to Amp", Commands.runOnce(m_armSubsystem::ampSetpoint));
+    // NamedCommands.registerCommand("Arm to Shooter Subwoofer", Commands.runOnce(m_armSubsystem::shooterSetpoint));
+    // NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece", Commands.runOnce(() -> m_armSubsystem.setReference(26.5)));
+    // NamedCommands.registerCommand("Arm to Shooter Side Source 1st Piece Test", Commands.runOnce(() -> m_armSubsystem.setReference(23)));
 
 
     autoChooser = AutoBuilder.buildAutoChooser();
@@ -172,9 +163,9 @@ public class RobotContainer
 
     } else
     {
-      driverXbox.a().onTrue(
-        (Commands.runOnce(drivebase::zeroGyroWithAlliance))
-      );
+      // driverXbox.a().onTrue(
+      //   (Commands.runOnce(drivebase::zeroGyroWithAlliance))
+      // );
       // driverXbox.x().onTrue(
       //   Commands.runOnce(drivebase::addFakeVisionReading)
       // );
@@ -190,66 +181,66 @@ public class RobotContainer
         (Commands.runOnce(drivebase::zeroGyro))
       );
 
-    driverXbox.y().whileTrue(
-        drivebase.aimAtSpeaker(2)
-      );
+    // driverXbox.y().whileTrue(
+    //     drivebase.aimAtSpeaker(2)
+    //   );
       
-    driverXbox.rightTrigger().whileTrue(
-      m_shooterCommand
-    );
+    // driverXbox.rightTrigger().whileTrue(
+    //   m_shooterCommand
+    // );
 
-    driverXbox.leftTrigger().whileTrue(
-      m_intakeInCommand
-    );
+    // driverXbox.leftTrigger().whileTrue(
+    //   m_intakeInCommand
+    // );
 
-    driverXbox.b().whileTrue(
-      m_intakeOverrideCommand
-    );
+    // driverXbox.b().whileTrue(
+    //   m_intakeOverrideCommand
+    // );
 
-    driverXbox.leftBumper().whileTrue(
-      m_intakeOutCommand
-    );
+    // driverXbox.leftBumper().whileTrue(
+    //   m_intakeOutCommand
+    // );
 
-    driverXbox.rightBumper().whileTrue(
-      m_shooterShuttleCommand
-    );
+    // driverXbox.rightBumper().whileTrue(
+    //   m_shooterShuttleCommand
+    // );
 
-    // Button Box Configs
-    m_buttonBox.button(1).whileTrue(
-      m_manualArmDownCommand
-    );
+    // // Button Box Configs
+    // m_buttonBox.button(1).whileTrue(
+    //   m_manualArmDownCommand
+    // );
 
-    m_buttonBox.button(3).whileTrue(
-      m_manualArmUpCommand
-    );
+    // m_buttonBox.button(3).whileTrue(
+    //   m_manualArmUpCommand
+    // );
 
-    m_buttonBox.button(4).whileTrue(
-      Commands.runOnce(m_armSubsystem::intakeSetpoint)
-    );
+    // m_buttonBox.button(4).whileTrue(
+    //   Commands.runOnce(m_armSubsystem::intakeSetpoint)
+    // );
 
-    m_buttonBox.button(6).whileTrue(
-      Commands.runOnce(m_armSubsystem::shooterSetpoint)
-    );
+    // m_buttonBox.button(6).whileTrue(
+    //   Commands.runOnce(m_armSubsystem::shooterSetpoint)
+    // );
       
-    m_buttonBox.button(5).whileTrue(
-      Commands.runOnce(m_armSubsystem::ampSetpoint)
-    );
+    // m_buttonBox.button(5).whileTrue(
+    //   Commands.runOnce(m_armSubsystem::ampSetpoint)
+    // );
 
-    m_buttonBox.button(10).whileTrue(
-      m_climberUpOverrideCmd
-    );
+    // m_buttonBox.button(10).whileTrue(
+    //   m_climberUpOverrideCmd
+    // );
 
-    m_buttonBox.button(9).whileTrue(
-      m_climberDownOverrideCmd
-    );
+    // m_buttonBox.button(9).whileTrue(
+    //   m_climberDownOverrideCmd
+    // );
 
-    m_buttonBox.pov(0).whileTrue(
-      m_climberUpCommand
-    );
+    // m_buttonBox.pov(0).whileTrue(
+    //   m_climberUpCommand
+    // );
 
-    m_buttonBox.pov(180).whileTrue(
-      m_climberDownCommand
-    );
+    // m_buttonBox.pov(180).whileTrue(
+    //   m_climberDownCommand
+    // );
 
       drivebase.setDefaultCommand(
           !RobotBase.isSimulation() ? driveFieldOrientedAnglularVelocity : driveFieldOrientedAnglularVelocity);
