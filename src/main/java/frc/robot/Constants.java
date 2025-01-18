@@ -87,8 +87,8 @@ public final class Constants
     public static final double kShooterSetpoint = 17;
     public static final double kAmpSetpoint = 99;
 
-    public static final double kArmUpSpeed = 0.2;
-    public static final double kArmDownSpeed = -0.2;
+    public static final double kArmUpSpeed = 0.1;
+    public static final double kArmDownSpeed = -0.1;
 
   }
 

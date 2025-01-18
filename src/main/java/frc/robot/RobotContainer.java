@@ -26,6 +26,7 @@ import frc.robot.commands.Climber.ClimberUpCommand;
 import frc.robot.commands.Climber.ClimberUpOverrideCmd;
 import frc.robot.commands.Arm.ArmCommand;
 import frc.robot.subsystems.ClimberSubsystem;
+import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.SwerveSubsystem;
 import frc.robot.subsystems.ArmSubsystem;
 
@@ -48,7 +49,7 @@ public class RobotContainer
                                                                          "swerve/neo"));
  
   private final ArmSubsystem m_armSubsystem = new ArmSubsystem();
-  // private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
+  private final IntakeSubsystem m_intakeSubsystem = new IntakeSubsystem();
   // private final ShooterSubsystem m_shooterSubsystem = new ShooterSubsystem();
   private final ClimberSubsystem m_climberSubsystem = new ClimberSubsystem();
 
@@ -187,13 +188,22 @@ public class RobotContainer
     //     drivebase.aimAtSpeaker(2)
     //   );
       
-    // driverXbox.rightTrigger().whileTrue(
-    //   m_shooterCommand
-    // );
+    driverXbox.leftTrigger().whileTrue(
+      Commands.runOnce(m_intakeSubsystem :: intakeIn)
+    );
 
-    // driverXbox.leftTrigger().whileTrue(
-    //   m_intakeInCommand
-    // );
+    driverXbox.leftTrigger().whileFalse(
+      Commands.runOnce(m_intakeSubsystem :: intakeOff)
+    );
+
+    driverXbox.rightTrigger().whileTrue(
+      Commands.runOnce(m_intakeSubsystem :: intakeOut)
+    );
+
+    driverXbox.rightTrigger().whileFalse(
+      Commands.runOnce(m_intakeSubsystem :: intakeOff)
+    );
+
 
     // driverXbox.b().whileTrue(
     //   m_intakeOverrideCommand
@@ -208,11 +218,11 @@ public class RobotContainer
     // );
 
     // Button Box Configs
-    driverXbox.rightBumper().whileTrue(
+    driverXbox.leftBumper().whileTrue(
       m_manualArmDownCommand
     );
 
-    driverXbox.leftBumper().whileTrue(
+    driverXbox.rightBumper().whileTrue(
       m_manualArmUpCommand
     );
 
